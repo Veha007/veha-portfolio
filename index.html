@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Kantumruy+Pro:wght@500;700&display=swap">
 <style>
 /* Layout: the page is a design canvas. Sections are labelled artboards, the hero carries selection handles and a live cursor. Dark only, by choice. */
 :root{
@@ -144,11 +144,64 @@ h3{text-wrap:balance}
 .ps h4{margin:0 0 10px;font:700 20px/1.2 var(--display)}
 .ps ul{margin:0;padding-left:18px;color:var(--muted)}
 .ps li+li{margin-top:6px}
-.screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-@media (max-width:820px){.screens{grid-template-columns:1fr}}
-.screens figure{margin:0;min-width:0}
-.screens img{border-radius:4px;border:1px solid var(--line);aspect-ratio:16/9;object-fit:cover;width:100%}
-.screens figcaption{color:var(--muted);margin-top:8px}
+.cs-media{margin:0 calc(-1 * clamp(20px,4vw,48px)) 32px;border-block:1px solid var(--line);background:#0B1A14}
+.cs-media img{width:100%;height:auto}
+.cs-block{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px;padding-block:28px;border-top:1px solid var(--line)}
+@media (max-width:760px){.cs-block{grid-template-columns:1fr;gap:12px}}
+.cs-block > .mono{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding-top:4px}
+.cs-block p{margin:0 0 14px;color:var(--muted);max-width:68ch}
+.cs-block p strong{color:var(--fg);font-weight:600}
+.cs-block .note{font-size:14px;border-left:2px solid var(--brand);padding-left:12px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.trio{grid-template-columns:1fr}}
+.trio > div{border:1px solid var(--line);border-radius:4px;padding:20px;background:var(--ink);min-width:0}
+.trio > div.sol{border-color:color-mix(in srgb,var(--brand) 60%,var(--line))}
+.trio .n{color:var(--muted)}
+.trio > div.sol .n{color:var(--brand)}
+.trio h4{margin:8px 0 8px;font:700 19px/1.2 var(--display)}
+.trio p{margin:0;font-size:15px}
+.scope{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
+@media (max-width:640px){.scope{grid-template-columns:1fr}}
+.scope li{color:var(--muted);font-size:15px;padding-left:16px;position:relative}
+.scope li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--brand)}
+.scope b{color:var(--fg);font-weight:600;display:block}
+.wire{margin:0}
+.wire img{border-radius:4px;border:1px solid var(--line);width:100%;height:auto}
+.wire figcaption{color:var(--muted);margin-top:8px}
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:4px;overflow:hidden}
+@media (max-width:640px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}.swatches div:first-child{grid-column:1/-1}}
+.swatches div{aspect-ratio:3/4;padding:12px;display:flex;flex-direction:column;justify-content:space-between;font-size:13px;min-width:0}
+.swatches b{font-weight:600}
+.swatches span{font:400 11px/1.4 var(--mono);opacity:.8}
+.type-spec{margin-top:16px;border:1px solid var(--line);border-radius:4px;padding:20px;background:var(--ink);display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 32px;align-items:center}
+@media (max-width:640px){.type-spec{grid-template-columns:1fr}}
+.type-spec .aa{font:700 clamp(64px,10vw,104px)/1 "Kantumruy Pro",var(--display);color:var(--fg)}
+.type-spec .name{font:700 24px/1.1 "Kantumruy Pro",var(--display);margin:0 0 6px}
+.type-spec .glyphs{font:500 15px/1.5 "Kantumruy Pro",var(--body);color:var(--muted);margin:0;overflow-wrap:anywhere}
+.type-spec .glyphs.b{font-weight:700;color:var(--fg)}
+.finals-head{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;margin-bottom:16px}
+.finals-head p{margin:0}
+.seg{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--ink)}
+.seg button{border:0;background:none;color:var(--muted);font:600 14px/1 var(--body);padding:9px 16px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--brand);color:var(--on-brand)}
+.finals{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px}
+@media (max-width:820px){.finals{grid-template-columns:1fr}}
+.finals .stack{display:grid;gap:16px;min-width:0}
+.finals figure,.mobiles figure{margin:0;min-width:0;display:flex;flex-direction:column}
+.pair{position:relative;overflow:hidden;border-radius:4px;border:1px solid var(--line);background:var(--panel)}
+.pair img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:opacity .45s ease,object-position 6s ease-in-out}
+.pair img.d{opacity:0}
+.cs[data-mode="dark"] .pair img.l{opacity:0}
+.cs[data-mode="dark"] .pair img.d{opacity:1}
+.pair.scroll:hover img{object-position:bottom}
+.finals .home .pair{flex:1;min-height:440px}
+.finals .prod .pair{aspect-ratio:1000/1036}
+.finals .chk .pair{aspect-ratio:1000/763}
+figcaption.mono{color:var(--muted);margin-top:8px}
+.mobiles{display:grid;grid-template-columns:repeat(2,minmax(0,200px)) minmax(0,1fr);gap:16px;margin-top:16px;align-items:end}
+@media (max-width:640px){.mobiles{grid-template-columns:repeat(2,minmax(0,1fr))}.mobiles .txt{grid-column:1/-1;order:-1}}
+.mobiles .pair{aspect-ratio:9/19;border-radius:22px;border:6px solid #23262F}
+.mobiles .txt p{color:var(--muted);margin:0;max-width:40ch;font-size:15px}
 
 /* PROCESS */
 .steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:4px;overflow:hidden}
@@ -207,12 +260,39 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .vw span{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(10,11,15,.85));font:500 12px/1.3 var(--mono);letter-spacing:.03em;opacity:0;transition:opacity .25s}
 .vw:hover span,.vw:focus-visible span{opacity:1}
 @media (hover:none){.vw span{opacity:1}}
-.community{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(24px,5vw,56px);align-items:center;margin-top:32px;border:1px solid var(--line);border-radius:4px;padding:clamp(20px,4vw,48px);background:color-mix(in srgb,var(--brand) 8%,var(--ink))}
+.community{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:clamp(24px,5vw,56px);align-items:center;margin-top:32px;border:1px solid var(--line);border-radius:4px;padding:clamp(20px,4vw,48px);background:color-mix(in srgb,var(--brand) 8%,var(--ink))}
 @media (max-width:760px){.community{grid-template-columns:1fr}}
 .community h3{font:800 clamp(28px,4vw,44px)/1.05 var(--display);letter-spacing:-.02em;margin:10px 0 12px}
 .community p{color:var(--muted);max-width:52ch;margin:0 0 22px}
 .community .members{color:var(--brand)}
-.community img{max-width:300px;width:100%;margin-inline:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+.community .count{font-variant-numeric:tabular-nums}
+/* Telegram phone: floats, tilts toward the pointer, live activity pops around it */
+.tg-stage{position:relative;width:100%;max-width:360px;margin-inline:auto;padding:28px 0;perspective:900px}
+.tg-tilt{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.tg-phone{position:relative;width:62%;max-width:230px;margin-inline:auto;border-radius:34px;padding:7px;background:linear-gradient(145deg,#3A3F4B,#15171D 45%,#2A2E38);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 0 1px #4A4F5C inset,0 0 60px -10px color-mix(in srgb,var(--brand) 45%,transparent);animation:tg-float 7s ease-in-out infinite}
+.tg-phone img{width:100%;height:auto;border-radius:28px;display:block}
+.tg-phone::after{content:"";position:absolute;inset:7px;border-radius:28px;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 48%,transparent 60%);background-size:250% 100%;background-position:150% 0;animation:tg-shine 7s ease-in-out infinite;pointer-events:none}
+.tg-glow{position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1px solid color-mix(in srgb,var(--brand) 40%,transparent);animation:tg-ring 4s ease-out infinite;pointer-events:none}
+.tg-glow.g2{animation-delay:2s}
+.tg-pop{position:absolute;display:flex;align-items:center;gap:8px;padding:8px 12px 8px 8px;border-radius:14px;background:color-mix(in srgb,var(--panel) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);font-size:13px;line-height:1.25;white-space:nowrap;box-shadow:0 12px 30px -10px rgba(0,0,0,.6);opacity:0;animation:tg-pop 12s cubic-bezier(.2,.8,.2,1) infinite}
+.tg-pop i{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--brand);color:var(--on-brand);font-style:normal;font-weight:700;font-size:13px;flex-shrink:0}
+.tg-pop small{display:block;color:var(--muted);font-size:11px}
+.tg-pop.p1{top:12%;left:0}
+.tg-pop.p2{top:46%;right:0;animation-delay:4s}
+.tg-pop.p3{bottom:10%;left:4%;animation-delay:8s}
+.tg-react{position:absolute;bottom:18%;right:16%;width:0;height:0;pointer-events:none}
+.tg-react span{position:absolute;left:0;bottom:0;font-size:16px;color:var(--brand);opacity:0;animation:tg-rise 3.6s ease-out infinite}
+.tg-react span:nth-child(2){left:14px;animation-delay:.7s;font-size:12px}
+.tg-react span:nth-child(3){left:-12px;animation-delay:1.4s;color:#FFC94D}
+.tg-react span:nth-child(4){left:8px;animation-delay:2.1s;font-size:20px}
+.tg-react span:nth-child(5){left:-4px;animation-delay:2.8s;color:#FFC94D;font-size:12px}
+@keyframes tg-float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(-1deg)}}
+@keyframes tg-shine{0%,55%{background-position:150% 0}75%,100%{background-position:-60% 0}}
+@keyframes tg-ring{0%{transform:translate(-50%,-50%) scale(.85);opacity:.9}100%{transform:translate(-50%,-50%) scale(1.45);opacity:0}}
+@keyframes tg-pop{0%{opacity:0;transform:translateY(10px) scale(.92)}4%,28%{opacity:1;transform:none}34%,100%{opacity:0;transform:translateY(-8px) scale(.96)}}
+@keyframes tg-rise{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,-10px),-150px) scale(1.1)}}
+.tg-react span:nth-child(even){--dx:12px}
+@media (prefers-reduced-motion:reduce){.tg-pop{opacity:1}.tg-react,.tg-glow{display:none}}
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(92vw,1200px);max-height:92vh;color:var(--fg)}
 dialog.lb::backdrop{background:rgba(8,9,12,.92)}
 dialog.lb img{max-height:84vh;width:auto;margin:auto;border-radius:4px}
@@ -281,16 +361,16 @@ main,footer{position:relative;z-index:1}
     <div class="wrap">
       <div class="frame-label mono"><b>Frame 02</b><span>Selected work</span></div>
       <h2>Selected work</h2>
-      <p class="sub">Public projects below. Most of my banking and fintech work is under NDA, so I share it privately.</p>
+      <p class="sub">A selection of projects I can share publicly. More is available on request.</p>
 
       <div class="work">
         <a class="case feature" href="#bookstore">
           <div class="shot">
             <span class="badge mono">Case study</span>
-            <img src="images/bookstore-hero.jpg" alt="Veha Book Store product page on a phone" loading="lazy">
+            <img src="images/bookstore-hero.jpg" alt="Bookstore Website product page on a phone" loading="lazy">
           </div>
           <div class="meta">
-            <div><h3>Veha Book Store</h3><p>An e-commerce website that takes a local bookstore online, so customers can browse and order books any time.</p></div>
+            <div><h3>Bookstore Website</h3><p>A responsive e-commerce site that moves a small book business off social media, with light and dark themes and local payment methods.</p></div>
             <div class="tags mono">Responsive website<br>UX/UI Design</div>
           </div>
         </a>
@@ -313,15 +393,15 @@ main,footer{position:relative;z-index:1}
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ECEDF1" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
               </div>
               <h3>Private work</h3>
-              <p>Loan origination for tablet and web, personal banking, digital credit and internal tool suites at WING Bank, plus product design and design systems at Techbodia. Shared face to face or on a private call.</p>
+              <p>To respect client confidentiality, a number of my projects are not shown publicly. I would be happy to share and discuss them with you privately.</p>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:10px">
-              <a class="btn accent sm" href="https://t.me/vehamen" target="_blank" rel="noopener">Request access on Telegram</a>
+              <a class="btn accent sm" href="https://t.me/vehamen" target="_blank" rel="noopener">Ask me on Telegram</a>
             </div>
           </div>
           <div class="meta">
-            <div><h3 style="font-size:22px">Fintech &amp; internal tools</h3><p>Available on request.</p></div>
-            <div class="tags mono">NDA<br>2022 to now</div>
+            <div><h3 style="font-size:22px">Confidential projects</h3><p>Available on request.</p></div>
+            <div class="tags mono">Private<br>On request</div>
           </div>
         </div>
       </div>
@@ -331,40 +411,103 @@ main,footer{position:relative;z-index:1}
   <!-- ============ CASE STUDY ============ -->
   <section id="bookstore">
     <div class="wrap">
-      <div class="frame-label mono"><b>Frame 03</b><span>Case study</span><span>Veha Book Store</span></div>
-      <div class="cs">
+      <div class="frame-label mono"><b>Frame 03</b><span>Case study</span><span>Bookstore Website</span></div>
+      <div class="cs" id="cs" data-mode="light">
         <div class="cs-head">
-          <h2>Veha Book Store</h2>
-          <a class="btn primary" href="https://www.figma.com/design/ve5EZGBkggIHqTVP6FJICy/Veha_Bookstore?node-id=3-101" target="_blank" rel="noopener">Open in Figma ↗</a>
+          <h2>Bookstore Website</h2>
+          <div class="cta">
+            <a class="btn ghost" href="images/bookstore/full-case-study.jpg" target="_blank" rel="noopener">Full case study ↗</a>
+            <a class="btn primary" href="https://www.figma.com/design/ve5EZGBkggIHqTVP6FJICy/Veha_Bookstore?node-id=3-101" target="_blank" rel="noopener">Open in Figma ↗</a>
+          </div>
         </div>
         <dl class="facts">
-          <div><dt class="mono">Project</dt><dd>E-commerce website</dd></div>
-          <div><dt class="mono">Role</dt><dd>UX/UI Design</dd></div>
-          <div><dt class="mono">Scope</dt><dd>Responsive web</dd></div>
-          <div><dt class="mono">Tools</dt><dd>Figma, Photoshop</dd></div>
+          <div><dt class="mono">Project</dt><dd>Bookstore</dd></div>
+          <div><dt class="mono">Works</dt><dd>UX/UI Design</dd></div>
+          <div><dt class="mono">Scope</dt><dd>Responsive website</dd></div>
+          <div><dt class="mono">Type</dt><dd>Real project</dd></div>
         </dl>
-        <div class="ps">
+        <div class="cs-media"><img src="images/bookstore/imac.jpg" alt="Bookstore Website homepage on a desktop screen" loading="lazy" width="1600" height="1160"></div>
+
+        <div class="cs-block">
+          <span class="mono">Overview</span>
           <div>
-            <h4>The problem</h4>
-            <ul>
-              <li>Sales were limited to people who could visit the store in person.</li>
-              <li>Customers had no way to browse or buy outside business hours.</li>
-              <li>The store's reach stopped at the local area.</li>
-            </ul>
-          </div>
-          <div class="sol">
-            <h4>The solution</h4>
-            <ul>
-              <li>A digital bookstore website that widens the market.</li>
-              <li>Browsing and ordering online, 24/7.</li>
-              <li>A new sales channel to grow revenue and the customer base.</li>
-            </ul>
+            <p>A friend runs a small book business and sold mainly through Facebook and Telegram. She had a strong community, but customers struggled to browse her catalog, and she spent hours answering the same questions about stock, prices and payment.</p>
+            <p>I designed a dedicated e-commerce website to give the business one <strong>professional, easy-to-use home</strong>. Customers can discover books and check out smoothly, while the sales process runs itself. Key decisions: a <strong>fully responsive layout</strong>, <strong>light and dark themes</strong>, and <strong>popular Cambodian payment methods</strong> to build trust with local buyers.</p>
+            <p class="note">The designs shown are a recreation of the original concept, rebranded with my own logo for portfolio purposes.</p>
           </div>
         </div>
-        <div class="screens">
-          <figure><img src="images/bookstore-homepage.jpg" alt="Bookstore homepage designs in light and dark mode" loading="lazy"><figcaption class="mono">01 · Homepage</figcaption></figure>
-          <figure><img src="images/bookstore-product.jpg" alt="Product details page designs" loading="lazy"><figcaption class="mono">02 · Product details</figcaption></figure>
-          <figure><img src="images/bookstore-checkout.jpg" alt="Checkout page designs" loading="lazy"><figcaption class="mono">03 · Checkout</figcaption></figure>
+
+        <div class="cs-block">
+          <span class="mono">Problem &amp; solution</span>
+          <div class="trio">
+            <div><span class="n mono">01 · Problem</span><h4>Selling through chat</h4><p>Social media sales felt unprofessional. Browsing was messy, checkout was uncertain, and the seller was stuck doing repetitive manual work.</p></div>
+            <div class="sol"><span class="n mono">02 · UX</span><h4>A clear, linear journey</h4><p>An organised catalog, dedicated product pages and a simple, secure one-page checkout replace the chaotic chat flow.</p></div>
+            <div class="sol"><span class="n mono">03 · UI</span><h4>A trustworthy brand</h4><p>A clean, modern UI with clear hierarchy and consistent components. Light and dark modes improve comfort and accessibility.</p></div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <span class="mono">Scope of work</span>
+          <ul class="scope">
+            <li><b>Fully responsive design</b>A consistent experience on desktop, tablet and mobile.</li>
+            <li><b>E-commerce components</b>Catalog grid, promo banners, search and a multi-option payment module.</li>
+            <li><b>Dual-theme system</b>Complete, accessible UI in both light and dark mode.</li>
+            <li><b>Localized checkout</b>ABA Bank, Wing, ACLEDA, Bakong and card payments for the local market.</li>
+          </ul>
+        </div>
+
+        <div class="cs-block">
+          <span class="mono">Wireframes</span>
+          <figure class="wire">
+            <img src="images/bookstore/wireframes.jpg" alt="Low-fidelity wireframes of the homepage and product page on desktop and mobile" loading="lazy" width="1600" height="1611">
+            <figcaption class="mono">Low-fidelity layouts mapped the flow from discovery to checkout before any visual design.</figcaption>
+          </figure>
+        </div>
+
+        <div class="cs-block">
+          <span class="mono">Design system</span>
+          <div>
+            <div class="swatches">
+              <div style="background:#4EB737;color:#06120A"><b>Primary</b><span>#4EB737</span></div>
+              <div style="background:#303133;color:#FFFFFF"><b>Text-Light</b><span>#303133</span></div>
+              <div style="background:#FFFFFF;color:#101217"><b>Text-Dark</b><span>#FFFFFF</span></div>
+              <div style="background:#000000;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2A2E39"><b>BG-Dark</b><span>#000000</span></div>
+              <div style="background:#FFFFFF;color:#101217;border-left:1px solid #DDD"><b>BG-Light</b><span>#FFFFFF</span></div>
+            </div>
+            <div class="type-spec">
+              <div class="aa" aria-hidden="true">Aa</div>
+              <div>
+                <p class="name">Kantumruy Pro</p>
+                <p class="glyphs">Medium · ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890</p>
+                <p class="glyphs b">Bold · ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <span class="mono">Final designs</span>
+          <div>
+            <div class="finals-head">
+              <p class="mono" style="color:var(--muted)">Hover a long screen to scroll it.</p>
+              <div class="seg" role="group" aria-label="Theme">
+                <button type="button" data-mode="light" aria-pressed="true">Light</button>
+                <button type="button" data-mode="dark" aria-pressed="false">Dark</button>
+              </div>
+            </div>
+            <div class="finals">
+              <figure class="home"><div class="pair scroll"><img class="l" src="images/bookstore/home-light.jpg" alt="Homepage, light theme" loading="lazy"><img class="d" src="images/bookstore/home-dark.jpg" alt="Homepage, dark theme" loading="lazy"></div><figcaption class="mono">01 · Homepage</figcaption></figure>
+              <div class="stack">
+                <figure class="prod"><div class="pair"><img class="l" src="images/bookstore/product-light.jpg" alt="Product details page, light theme" loading="lazy"><img class="d" src="images/bookstore/product-dark.jpg" alt="Product details page, dark theme" loading="lazy"></div><figcaption class="mono">02 · Product details</figcaption></figure>
+                <figure class="chk"><div class="pair"><img class="l" src="images/bookstore/checkout-light.jpg" alt="One-page checkout, light theme" loading="lazy"><img class="d" src="images/bookstore/checkout-dark.jpg" alt="One-page checkout, dark theme" loading="lazy"></div><figcaption class="mono">03 · Checkout</figcaption></figure>
+              </div>
+            </div>
+            <div class="mobiles">
+              <figure><div class="pair scroll"><img class="l" src="images/bookstore/m-home-light.jpg" alt="Mobile homepage, light theme" loading="lazy"><img class="d" src="images/bookstore/m-home-dark.jpg" alt="Mobile homepage, dark theme" loading="lazy"></div><figcaption class="mono">04 · Mobile home</figcaption></figure>
+              <figure><div class="pair scroll"><img class="l" src="images/bookstore/m-product-light.jpg" alt="Mobile product page, light theme" loading="lazy"><img class="d" src="images/bookstore/m-product-dark.jpg" alt="Mobile product page, dark theme" loading="lazy"></div><figcaption class="mono">05 · Mobile product</figcaption></figure>
+              <div class="txt"><p>Every screen was designed for mobile too, where most of the store's social media customers shop.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -392,12 +535,21 @@ main,footer{position:relative;z-index:1}
 
       <div class="community">
         <div>
-          <span class="mono members">V CREATIVE DESIGN · 2,000+ MEMBERS</span>
+          <span class="mono members">V CREATIVE DESIGN · <span class="count" id="tg-count" data-to="2604">2,604</span> SUBSCRIBERS</span>
           <h3>Join my creative community</h3>
-          <p>I founded V Creative Design on Telegram, a channel where more than 2,000 creatives get free graphic design resources and artwork, and support each other.</p>
+          <p>I founded V Creative Design on Telegram, a channel where more than 2,600 creatives get free graphic design resources and artwork, and support each other.</p>
           <a class="btn accent" href="https://t.me/vcreativedesign" target="_blank" rel="noopener">Join on Telegram ↗</a>
         </div>
-        <img src="images/visual/telegram-mockup.png" alt="V Creative Design Telegram channel on a phone" loading="lazy">
+        <div class="tg-stage" id="tg-stage">
+          <span class="tg-glow"></span><span class="tg-glow g2"></span>
+          <div class="tg-tilt" id="tg-tilt">
+            <div class="tg-phone"><img src="images/visual/telegram-screen.jpg" alt="V Creative Design Telegram channel with 2,604 subscribers" loading="lazy" width="600" height="1233"></div>
+          </div>
+          <div class="tg-pop p1"><i>+1</i><span>New subscriber<small>just now</small></span></div>
+          <div class="tg-pop p2"><i>&#9670;</i><span>New artwork posted<small>Free PSD resource</small></span></div>
+          <div class="tg-pop p3"><i>&#9733;</i><span>Reactions rolling in<small>from the community</small></span></div>
+          <div class="tg-react" aria-hidden="true"><span>&#9829;</span><span>&#9829;</span><span>&#9733;</span><span>&#9829;</span><span>&#9733;</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -553,6 +705,29 @@ lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
   addEventListener('blur',function(){target=0;kick()});
   addEventListener('scroll',kick,{passive:true});
   addEventListener('resize',size); size();
+})();
+
+(function(){
+  var st=document.getElementById('tg-stage'),tl=document.getElementById('tg-tilt'),cn=document.getElementById('tg-count');
+  var calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(st&&!calm&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+    st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+      tl.style.setProperty('--ry',(px*16).toFixed(2)+'deg');tl.style.setProperty('--rx',(-py*12).toFixed(2)+'deg')});
+    st.addEventListener('pointerleave',function(){tl.style.setProperty('--ry','0deg');tl.style.setProperty('--rx','0deg')});
+  }
+  if(cn&&!calm&&'IntersectionObserver' in window){
+    var to=+cn.dataset.to,done=false;
+    new IntersectionObserver(function(es,o){es.forEach(function(e){if(!e.isIntersecting||done)return;done=true;o.disconnect();
+      var t0=performance.now(),from=to-260;
+      (function step(t){var k=Math.min(1,(t-t0)/1600),v=Math.round(from+(to-from)*(1-Math.pow(1-k,3)));cn.textContent=v.toLocaleString('en-US');if(k<1)requestAnimationFrame(step)})(t0);
+    })},{threshold:.6}).observe(cn);
+  }
+})();
+
+(function(){var cs=document.getElementById('cs');if(!cs)return;
+  cs.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+    cs.dataset.mode=b.dataset.mode;cs.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+  })});
 })();
 </script>
 </body>
